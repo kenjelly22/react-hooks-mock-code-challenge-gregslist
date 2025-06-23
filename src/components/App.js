@@ -24,17 +24,12 @@ function App() {
     const sortedListings = [...listings].sort((a, b) => {
       const listingA = a.location
       const listingB = b.location
-      if (listingA < listingB) {
-        return -1
-      }
-      if (listingA > listingB) {
-        return 1
-      }
+      if (listingA < listingB) return -1
+      if (listingA > listingB) return 1
       return 0
     })
 
     setListings(sortedListings)
-    console.log(listings)
   }
 
   return (

@@ -1,6 +1,5 @@
 import React from "react"
 import Search from "./Search"
-// import Sort from "./Sort"
 
 function Header({listings, onSearch, onSort}) {
   return (
