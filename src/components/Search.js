@@ -1,20 +1,18 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 
-function Search({listings}) {
+function Search({listings, onSearch}) {
   const [searchTerm, setSearchTerm] = useState("")
-  const [filteredListings, setFilteredListings] = useState([])
 
-  const handleSearchChange = (e) => {
+  const handleChange = (e) => {
     setSearchTerm(e.target.value)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    const result = listings.filter(
-      (listing) => listing.description === searchTerm
+    const filtered = listings.filter((listing) =>
+      listing.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    setFilteredListings(result)
-    console.log(result)
+    console.log(filtered)
   }
 
   return (
@@ -24,7 +22,7 @@ function Search({listings}) {
         id="search"
         placeholder="search free stuff"
         value={searchTerm}
-        onChange={handleSearchChange}
+        onChange={handleChange}
       />
       <button type="submit">🔍</button>
     </form>

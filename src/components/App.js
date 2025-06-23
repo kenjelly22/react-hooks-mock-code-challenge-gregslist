@@ -4,6 +4,7 @@ import ListingsContainer from "./ListingsContainer"
 
 function App() {
   const [listings, setListings] = useState([])
+  const [filteredListings, setFilteredListings] = useState([])
 
   const handleFetchedListings = (fetchedListings) => {
     setListings(fetchedListings)
@@ -16,6 +17,10 @@ function App() {
     setListings(updatedListings)
   }
 
+  const handleSearch = (results) => {
+    setFilteredListings(results)
+  }
+
   return (
     <div className="app">
       <Header listings={listings} />
@@ -23,6 +28,7 @@ function App() {
         listings={listings}
         onListingsFetch={handleFetchedListings}
         onDeleteListing={handleDeleteListing}
+        onSearch={handleSearch}
       />
     </div>
   )
