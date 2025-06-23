@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 function ListingCard() {
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState()
 
   const handleFavToggle = () => {
     setIsActive((isActive) => !isActive)
@@ -14,21 +14,12 @@ function ListingCard() {
         <img src={"https://via.placeholder.com/300x300"} alt={"description"} />
       </div>
       <div className="details">
-        {true ? (
-          <button
-            onClick={handleFavToggle}
-            className={`emoji-button favorite ${isActive ? "active" : ""}`}
-          >
-            ★
-          </button>
-        ) : (
-          <button
-            onClick={handleFavToggle}
-            className={`emoji-button favorite ${isActive ? "active" : ""}`}
-          >
-            ☆
-          </button>
-        )}
+        <button
+          onClick={handleFavToggle}
+          className={`emoji-button favorite ${isActive ? "active" : ""}`}
+        >
+          {isActive ? "★" : "☆"}
+        </button>
         <strong>{"description"}</strong>
         <span> · {"location"}</span>
         <button className="emoji-button delete">🗑</button>
