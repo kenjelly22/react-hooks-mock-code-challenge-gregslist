@@ -53,6 +53,19 @@ header h1 {
   border-radius: 3px;
 }
 
+button.sort,
+button.new {
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 8px;
+  transition: background-color 0.2s ease;
+}
+
 main {
   padding: 0 1rem;
   max-width: 1200px;

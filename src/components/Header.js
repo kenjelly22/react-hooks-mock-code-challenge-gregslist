@@ -12,7 +12,12 @@ function Header({listings, onSearch, onSort}) {
       </h1>
       <Search listings={listings} onSearch={onSearch} />
       <div>
-        <button onClick={onSort}>Sort by Location</button>
+        <button onClick={onSort} className="sort">
+          Sort by Location
+        </button>
+      </div>
+      <div>
+        <button className="new">Create New Listing</button>
       </div>
     </header>
   )
