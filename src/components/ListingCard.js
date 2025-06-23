@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useState} from "react"
 
 function ListingCard() {
+  const [isActive, setIsActive] = useState(false)
+
+  const handleFavToggle = () => {
+    setIsActive((isActive) => !isActive)
+  }
+
   return (
     <li className="card">
       <div className="image">
@@ -9,16 +15,26 @@ function ListingCard() {
       </div>
       <div className="details">
         {true ? (
-          <button className="emoji-button favorite active">★</button>
+          <button
+            onClick={handleFavToggle}
+            className={`emoji-button favorite ${isActive ? "active" : ""}`}
+          >
+            ★
+          </button>
         ) : (
-          <button className="emoji-button favorite">☆</button>
+          <button
+            onClick={handleFavToggle}
+            className={`emoji-button favorite ${isActive ? "active" : ""}`}
+          >
+            ☆
+          </button>
         )}
         <strong>{"description"}</strong>
         <span> · {"location"}</span>
         <button className="emoji-button delete">🗑</button>
       </div>
     </li>
-  );
+  )
 }
 
-export default ListingCard;
+export default ListingCard
