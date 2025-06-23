@@ -1,15 +1,20 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 
-function Search() {
+function Search({listings}) {
   const [searchTerm, setSearchTerm] = useState("")
+  const [filteredListings, setFilteredListings] = useState([])
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value)
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log("submitted")
+    const result = listings.filter(
+      (listing) => listing.description === searchTerm
+    )
+    setFilteredListings(result)
+    console.log(result)
   }
 
   return (
@@ -19,7 +24,7 @@ function Search() {
         id="search"
         placeholder="search free stuff"
         value={searchTerm}
-        onChange={handleChange}
+        onChange={handleSearchChange}
       />
       <button type="submit">🔍</button>
     </form>
