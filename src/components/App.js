@@ -23,12 +23,11 @@ function App() {
 
   return (
     <div className="app">
-      <Header listings={listings} />
+      <Header listings={listings} onSearch={handleSearch} />
       <ListingsContainer
         listings={listings}
         onListingsFetch={handleFetchedListings}
         onDeleteListing={handleDeleteListing}
-        onSearch={handleSearch}
       />
     </div>
   )
