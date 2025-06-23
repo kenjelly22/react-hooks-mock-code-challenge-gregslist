@@ -9,8 +9,11 @@ function App() {
     setListings(fetchedListings)
   }
 
-  const handleDeleteListing = () => {
-    console.log(listings)
+  const handleDeleteListing = (selectedListing) => {
+    const updatedListings = listings.filter(
+      (listing) => listing.id !== selectedListing.id
+    )
+    setListings(updatedListings)
   }
 
   return (
