@@ -9,12 +9,17 @@ function App() {
     setListings(fetchedListings)
   }
 
+  const handleDeleteListing = () => {
+    console.log(listings)
+  }
+
   return (
     <div className="app">
       <Header />
       <ListingsContainer
         listings={listings}
         onListingsFetch={handleFetchedListings}
+        onDeleteListing={handleDeleteListing}
       />
     </div>
   )

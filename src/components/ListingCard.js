@@ -1,10 +1,14 @@
 import React, {useState} from "react"
 
-function ListingCard() {
+function ListingCard({onDeleteListing, listing}) {
   const [isActive, setIsActive] = useState()
 
   const handleFavToggle = () => {
     setIsActive((isActive) => !isActive)
+  }
+
+  const handleDeleteClick = () => {
+    console.log(listing.id)
   }
 
   return (
@@ -22,7 +26,9 @@ function ListingCard() {
         </button>
         <strong>{"description"}</strong>
         <span> · {"location"}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button onClick={handleDeleteClick} className="emoji-button delete">
+          🗑
+        </button>
       </div>
     </li>
   )
