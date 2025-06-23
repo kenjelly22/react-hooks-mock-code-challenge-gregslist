@@ -4,7 +4,6 @@ import ListingsContainer from "./ListingsContainer"
 
 function App() {
   const [listings, setListings] = useState([])
-  // const [filteredListings, setFilteredListings] = useState([])
 
   const handleFetchedListings = (fetchedListings) => {
     setListings(fetchedListings)
@@ -21,9 +20,26 @@ function App() {
     setListings(results)
   }
 
+  const handleSort = () => {
+    const sortedListings = listings.sort((a, b) => {
+      const listingA = a.location
+      const listingB = b.location
+      if (listingA < listingB) {
+        return -1
+      }
+      if (listingA > listingB) {
+        return 1
+      }
+      return 0
+    })
+
+    setListings(sortedListings)
+    console.log(listings)
+  }
+
   return (
     <div className="app">
-      <Header listings={listings} onSearch={handleSearch} />
+      <Header listings={listings} onSearch={handleSearch} onSort={handleSort} />
       <ListingsContainer
         listings={listings}
         onListingsFetch={handleFetchedListings}

@@ -13,7 +13,6 @@ function Search({listings, onSearch}) {
       listing.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
     onSearch(filtered)
-    console.log(filtered)
   }
 
   return (
