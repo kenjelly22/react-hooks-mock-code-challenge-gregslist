@@ -19,7 +19,7 @@ function ListingCard({onDeleteListing, listing}) {
     <li className="card">
       <div className="image">
         <span className="price">$0</span>
-        <img src={`${listing.image}`} alt={"description"} />
+        <img src={`${listing.image}`} alt={`${listing.description}`} />
       </div>
       <div className="details">
         <button
@@ -28,8 +28,8 @@ function ListingCard({onDeleteListing, listing}) {
         >
           {isActive ? "★" : "☆"}
         </button>
-        <strong>{"description"}</strong>
-        <span> · {"location"}</span>
+        <strong>{`${listing.description}`}</strong>
+        <span> · {`${listing.location}`}</span>
         <button onClick={handleDeleteClick} className="emoji-button delete">
           🗑
         </button>

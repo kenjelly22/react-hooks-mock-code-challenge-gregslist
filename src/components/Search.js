@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
-function Search() {
+function Search({listings}) {
   function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
+    e.preventDefault()
+    console.log("submitted")
   }
 
   return (
@@ -17,7 +17,7 @@ function Search() {
       />
       <button type="submit">🔍</button>
     </form>
-  );
+  )
 }
 
-export default Search;
+export default Search

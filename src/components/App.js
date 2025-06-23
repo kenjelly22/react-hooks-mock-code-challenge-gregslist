@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header listings={listings} />
       <ListingsContainer
         listings={listings}
         onListingsFetch={handleFetchedListings}
