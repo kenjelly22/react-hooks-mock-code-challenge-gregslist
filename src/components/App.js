@@ -21,7 +21,7 @@ function App() {
   }
 
   const handleSort = () => {
-    const sortedListings = listings.sort((a, b) => {
+    const sortedListings = [...listings].sort((a, b) => {
       const listingA = a.location
       const listingB = b.location
       if (listingA < listingB) {

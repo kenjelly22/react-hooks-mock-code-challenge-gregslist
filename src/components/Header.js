@@ -1,6 +1,6 @@
 import React from "react"
 import Search from "./Search"
-import Sort from "./Sort"
+// import Sort from "./Sort"
 
 function Header({listings, onSearch, onSort}) {
   return (
@@ -13,7 +13,7 @@ function Header({listings, onSearch, onSort}) {
       </h1>
       <Search listings={listings} onSearch={onSearch} />
       <div>
-        <Sort onSort={onSort} />
+        <button onClick={onSort}>Sort by Location</button>
       </div>
     </header>
   )
