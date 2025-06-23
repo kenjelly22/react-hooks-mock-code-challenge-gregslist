@@ -12,7 +12,8 @@ function Search({listings, onSearch}) {
     const filtered = listings.filter((listing) =>
       listing.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    onSearch = filtered
+    onSearch(filtered)
+    console.log(filtered)
   }
 
   return (
