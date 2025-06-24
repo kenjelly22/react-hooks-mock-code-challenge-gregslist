@@ -34,7 +34,7 @@ function App() {
   }
 
   const handleForm = (formData) => {
-    console.log(formData)
+    // console.log(formData)
   }
 
   return (
