@@ -1,52 +1,61 @@
-import React from "react"
+import React, {useState} from "react"
 
-function Form({
-  onAddNewListing,
-  description,
-  setDescription,
-  image,
-  setImage,
-  location,
-  setLocation,
-}) {
+function Form({onAddNewListing}) {
+  const [formData, setFormData] = useState({
+    description: "",
+    location: "",
+    image: "",
+  })
+
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    const updatedForm = {...formData, [name]: value}
+    setFormData(updatedForm)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    const formData = {
-      description: description,
-      image: image,
-      location: location,
-    }
-    onAddNewListing(formData)
+    fetch("http://localhost:6001/listings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then((data) => onAddNewListing(data))
   }
 
   return (
     <form className="new-form" onSubmit={handleSubmit}>
-      <div>
-        <input
-          className="new-item"
-          type="text"
-          placeholder="Description..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          className="new-item"
-          type="text"
-          placeholder="Location..."
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <input
-          className="new-item"
-          type="text"
-          placeholder="Image URL..."
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-        <button type="submit" className="new">
-          Add New Listing
-        </button>
-      </div>
+      <input
+        className="new-item"
+        type="text"
+        name="description"
+        placeholder="Description..."
+        value={formData.description}
+        onChange={handleChange}
+      />
+      <input
+        className="new-item"
+        type="text"
+        name="location"
+        placeholder="Location..."
+        value={formData.location}
+        onChange={handleChange}
+      />
+      <input
+        className="new-item"
+        type="text"
+        name="image"
+        placeholder="Image URL..."
+        value={formData.image}
+        onChange={handleChange}
+      />
+      <button type="submit" className="new">
+        Add New Listing
+      </button>
     </form>
   )
 }
