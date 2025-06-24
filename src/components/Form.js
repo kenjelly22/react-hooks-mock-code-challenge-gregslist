@@ -1,9 +1,22 @@
 import React from "react"
 
-function Form({onAddListing}) {
+function Form({
+  onAddNewListing,
+  description,
+  setDescription,
+  image,
+  setImage,
+  location,
+  setLocation,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("click")
+    const formData = {
+      description: description,
+      image: image,
+      location: location,
+    }
+    onAddNewListing(formData)
   }
 
   return (
@@ -12,22 +25,25 @@ function Form({onAddListing}) {
         <input
           className="new-item"
           type="text"
-          id="description"
           placeholder="Description..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <input
           className="new-item"
           type="text"
-          id="location"
           placeholder="Location..."
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
         <input
           className="new-item"
           type="text"
-          id="image"
           placeholder="Image URL..."
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
         />
-        <button onClick={onAddListing} className="new">
+        <button type="submit" className="new">
           Add New Listing
         </button>
       </div>

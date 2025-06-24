@@ -5,11 +5,15 @@ import Form from "./Form"
 
 function App() {
   const [listings, setListings] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+
+  const [description, setDescription] = useState("")
+  const [image, setImage] = useState("")
+  const [location, setLocation] = useState("")
 
   const handleFetchedListings = (fetchedListings) => {
     setListings(fetchedListings)
   }
-
   const handleDeleteListing = (selectedListing) => {
     const updatedListings = listings.filter(
       (listing) => listing.id !== selectedListing.id
@@ -17,32 +21,40 @@ function App() {
     setListings(updatedListings)
   }
 
-  const handleSearch = (results) => {
-    setListings(results)
-  }
+  const filteredListings = listings.filter((listing) =>
+    listing.description.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   const handleSort = () => {
     const sortedListings = [...listings].sort((a, b) => {
-      const listingA = a.location
-      const listingB = b.location
-      if (listingA < listingB) return -1
-      if (listingA > listingB) return 1
-      return 0
+      return a.location.localeCompare(b.location)
     })
-
     setListings(sortedListings)
   }
 
-  const handleForm = (formData) => {
-    // console.log(formData)
+  const handleNewListing = (newListing) => {
+    const updatedListings = {...listings, newListing}
+    setListings(updatedListings)
   }
 
   return (
     <div className="app">
-      <Header listings={listings} onSearch={handleSearch} onSort={handleSort} />
-      <Form onAddListing={handleForm} />
+      <Header
+        onSort={handleSort}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
+      />
+      <Form
+        onAddNewListing={handleNewListing}
+        description={description}
+        setDescription={setDescription}
+        image={image}
+        setImage={setImage}
+        location={location}
+        setLocation={setLocation}
+      />
       <ListingsContainer
-        listings={listings}
+        listings={filteredListings}
         onListingsFetch={handleFetchedListings}
         onDeleteListing={handleDeleteListing}
       />

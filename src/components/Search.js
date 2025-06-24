@@ -1,22 +1,27 @@
-import React, {useState} from "react"
+import React from "react"
 
-function Search({listings, onSearch}) {
-  const [searchTerm, setSearchTerm] = useState("")
+function Search({setSearchTerm, searchTerm}) {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const searchInput = document.querySelector("#search")
+
+  //   setSearchTerm(searchInput.value)
+  // }
+
+  // return (
+  //   <form className="searchbar" onSubmit={handleSubmit}>
+  //     <input type="text" id="search" placeholder="search free stuff" />
+  //     <button type="submit">🔍</button>
+  //   </form>
+  // )
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    const filtered = listings.filter((listing) =>
-      listing.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    onSearch(filtered)
+    const newItem = e.target.value
+    setSearchTerm(newItem)
   }
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <form className="searchbar">
       <input
         type="text"
         id="search"
@@ -24,6 +29,7 @@ function Search({listings, onSearch}) {
         value={searchTerm}
         onChange={handleChange}
       />
+
       <button type="submit">🔍</button>
     </form>
   )
