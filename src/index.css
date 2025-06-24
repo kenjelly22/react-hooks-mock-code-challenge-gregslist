@@ -66,6 +66,17 @@ button.new {
   transition: background-color 0.2s ease;
 }
 
+.new-form {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px #ccc solid;
+}
+
+.new-item {
+  padding: 5px;
+  margin: 10px;
+}
+
 main {
   padding: 0 1rem;
   max-width: 1200px;

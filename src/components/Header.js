@@ -16,9 +16,6 @@ function Header({listings, onSearch, onSort}) {
           Sort by Location
         </button>
       </div>
-      <div>
-        <button className="new">Create New Listing</button>
-      </div>
     </header>
   )
 }

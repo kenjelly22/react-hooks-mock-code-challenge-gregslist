@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import Header from "./Header"
 import ListingsContainer from "./ListingsContainer"
+import Form from "./Form"
 
 function App() {
   const [listings, setListings] = useState([])
@@ -32,9 +33,14 @@ function App() {
     setListings(sortedListings)
   }
 
+  const handleForm = (formData) => {
+    console.log(formData)
+  }
+
   return (
     <div className="app">
       <Header listings={listings} onSearch={handleSearch} onSort={handleSort} />
+      <Form onAddListing={handleForm} />
       <ListingsContainer
         listings={listings}
         onListingsFetch={handleFetchedListings}
